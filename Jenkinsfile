@@ -33,7 +33,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    docker.build("elixirsoft/ventural-backend-app:latest")
+                    docker.build("elixirsoft/ventural-backend-app:${TAG_NAME}")
                 }
             }
         }
