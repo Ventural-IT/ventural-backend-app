@@ -1,4 +1,4 @@
-# ********* hishab-game-app **************
+# ********* ventural-backend-app **************
 
 ## Technology Stack :
 - Java 17

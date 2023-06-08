@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.hishab</groupId>
-	<artifactId>hishab-game-app</artifactId>
+	<artifactId>ventural-backend-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>hishab-app</name>
-	<description>Demo project for Spring Boot</description>
+	<name>ventural-backend-app</name>
+	<description>A generalized backend application integrating all devops tool</description>
 	<properties>
 		<java.version>17</java.version>
 		<feign.version>11.8</feign.version>

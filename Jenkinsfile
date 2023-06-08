@@ -9,8 +9,8 @@ pipeline {
         git_credential = "git_credential"
         branch_name = "develop"
         aws_credential = "aws_credential"
-        repo_url = "https://github.com/julkarnain/hishab-game-app.git"
-        bucket = "hishab-game-app"
+        repo_url = "https://github.com/Ventural-IT/ventural-backend-app.git"
+        bucket = "ventural-backend-app"
         region = "us-east-1"
         webHook_url = "myWebHookURL"
     }
@@ -33,7 +33,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    docker.build("elixirsoft/hishab-game-app:latest")
+                    docker.build("elixirsoft/ventural-backend-app:latest")
                 }
             }
         }
@@ -41,17 +41,17 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'docker_credential') {
-                        docker.image("elixirsoft/hishab-game-app:latest").push()
-                        docker.image("elixirsoft/hishab-game-app:latest").push("latest")
+                        docker.image("elixirsoft/ventural-backend-app").push()
+                        docker.image("elixirsoft/ventural-backend-app:latest").push("latest")
                     }
                 }
             }
         }
         stage('Deploy'){
             steps {
-                sh "docker stop hishab-game-app | true"
-                sh "docker rm hishab-game-app | true"
-                sh "docker run --name hishab-game-app -d -p 8000:8000 hishab/hishab-game-app:latest"
+                sh "docker stop ventural-backend-app | true"
+                sh "docker rm ventural-backend-app | true"
+                sh "docker run --name ventural-backend-app -d -p 8000:8000 elixirsoft/ventural-backend-app:latest"
             }
         }
        /* stage("Upload"){
