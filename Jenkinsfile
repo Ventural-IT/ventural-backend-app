@@ -43,8 +43,8 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'docker_credential') {
-                        docker.image("elixirsoft/ventural-backend-app").push()
-                        docker.image("elixirsoft/ventural-backend-app:latest").push("latest")
+                       // docker.image("elixirsoft/ventural-backend-app").push()
+                        docker.image("elixirsoft/ventural-backend-app:${TAG_NAME}").push("latest")
                     }
                 }
             }
@@ -53,7 +53,7 @@ pipeline {
             steps {
                 sh "docker stop ventural-backend-app | true"
                 sh "docker rm ventural-backend-app | true"
-                sh "docker run --name ventural-backend-app -d -p 8000:8000 elixirsoft/ventural-backend-app:latest"
+                sh "docker run --name ventural-backend-app -d -p 8000:8000 elixirsoft/ventural-backend-app:${TAG_NAME}"
             }
         }
        /* stage("Upload"){
