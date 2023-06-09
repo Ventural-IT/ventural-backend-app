@@ -51,8 +51,8 @@ pipeline {
         }
         stage('Deploy'){
             steps {
-                sh "docker stop ventural-backend-app | true"
-                sh "docker rm ventural-backend-app | true"
+                sh "docker stop elixirsoft/ventural-backend-app | true"
+                sh "docker rm elixirsoft/ventural-backend-app | true"
                 sh "docker run --name ventural-backend-app -d -p 8000:8000 elixirsoft/ventural-backend-app:${TAG_NAME}"
             }
         }
