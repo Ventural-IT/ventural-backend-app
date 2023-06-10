@@ -72,7 +72,7 @@ pipeline {
         stage("Upload") {
             steps {
                 withAWS(region:"${region}", credentials:"${aws_credential}") {
-                    s3Upload(file:"elixirsoft/ventural-backend-app:${TAG_NAME}", bucket:"${bucket}", path:"${TAG_NAME}/")
+                    s3Upload(file:"*", bucket:"${bucket}", path:"${TAG_NAME}/")
                 }    
             }
         }
