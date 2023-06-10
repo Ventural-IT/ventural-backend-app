@@ -35,13 +35,10 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-            sh "mkdir ${TAG_NAME}"
-              dir("${TAG_NAME}"){
                 script {
                     docker.build("elixirsoft/ventural-backend-app:${TAG_NAME}")
                    // sh 'docker build -t -v $(which docker):/usr/local/bin/docker elixirsoft/ventural-backend-app:${TAG_NAME} .'
                 }
-               }
             }
         }
 	    stage('Pushing Docker Image to Dockerhub') {
@@ -54,7 +51,7 @@ pipeline {
                 }
             }
         }
-         /*  stage("Zip") {
+        /*  stage("Zip") {
             steps{
                // sh "mkdir ${TAG_NAME}"
                // dir("${TAG_NAME}"){
@@ -75,7 +72,7 @@ pipeline {
         stage("Upload") {
             steps {
                 withAWS(region:"${region}", credentials:"${aws_credential}") {
-                    s3Upload(file:"${TAG_NAME}", bucket:"${bucket}", path:"${TAG_NAME}/")
+                    s3Upload(file:"elixirsoft/ventural-backend-app:${TAG_NAME}", bucket:"${bucket}", path:"${TAG_NAME}/")
                 }    
             }
         }
