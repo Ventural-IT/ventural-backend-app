@@ -51,7 +51,7 @@ pipeline {
                 }
             }
         }
-        /*  stage("Zip") {
+          stage("Zip") {
             steps{
                // sh "mkdir ${TAG_NAME}"
                // dir("${TAG_NAME}"){
@@ -61,7 +61,7 @@ pipeline {
             }
         } 
        
-       
+       /*
        stage('Deploy') {
             steps {
                 sh "docker stop elixirsoft/ventural-backend-app | true"
