@@ -53,11 +53,11 @@ pipeline {
         }
           stage("Zip") {
             steps{
-                sh "mkdir ${TAG_NAME}"
-                dir("${TAG_NAME}"){
+               // sh "mkdir ${TAG_NAME}"
+               // dir("${TAG_NAME}"){
                     sh "docker save ${api_imagename}:${TAG_NAME} > ${api_imagename}-${TAG_NAME}.tar.gz"
                  //   sh "docker save ${auth_imagename}:${TAG_NAME} > ${auth_imagename}-${TAG_NAME}.tar.gz"
-                }
+               // }
             }
         } 
        
