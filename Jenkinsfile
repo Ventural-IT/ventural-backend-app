@@ -56,12 +56,12 @@ pipeline {
                 sh "docker run --name ventural-backend-app -d -p 8000:8000 elixirsoft/ventural-backend-app:${TAG_NAME}"
             }
         }
-       /* stage("Upload"){
+        stage("Upload"){
             steps{
                 withAWS(region:"${region}", credentials:"${aws_credential}){
                     s3Upload(file:"${TAG_NAME}", bucket:"${bucket}", path:"${TAG_NAME}/")
                 }    
             }
-        }*/
+        }
     }
 }
