@@ -51,15 +51,16 @@ pipeline {
                 }
             }
         }
-       /*   stage("Zip") {
+          stage("Zip") {
             steps{
                 sh "mkdir ${TAG_NAME}"
                 dir("${TAG_NAME}"){
-                    sh "docker save ${api_imagename}:${TAG_NAME} > images/${api_imagename}-${TAG_NAME}.tar.gz"
+                    sh "docker save ${api_imagename}:${TAG_NAME} > ${api_imagename}-${TAG_NAME}.tar.gz"
                  //   sh "docker save ${auth_imagename}:${TAG_NAME} > ${auth_imagename}-${TAG_NAME}.tar.gz"
                 }
             }
-        } */
+        } 
+       
         /*
        stage('Deploy') {
             steps {
@@ -71,7 +72,7 @@ pipeline {
         stage("Upload") {
             steps {
                 withAWS(region:"${region}", credentials:"${aws_credential}") {
-                    s3Upload(file:"images/${TAG_NAME}", bucket:"${bucket}", path:"${TAG_NAME}/")
+                    s3Upload(file:"${TAG_NAME}", bucket:"${bucket}", path:"${TAG_NAME}/")
                 }    
             }
         }
