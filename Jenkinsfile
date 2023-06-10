@@ -6,7 +6,7 @@ pipeline {
     }
     environment {
         DATE = new Date().format('yy.M')
-        TAG_NAME = "${DATE}.${BUILD_NUMBER}"
+        TAG_NAME = "${DATE}"//.${BUILD_NUMBER}"
         git_credential = "git_credential"
         branch_name = "develop"
         aws_credential = "aws_credential"
@@ -55,7 +55,7 @@ pipeline {
             steps{
                 sh "mkdir ${TAG_NAME}"
                 dir("${TAG_NAME}"){
-                    sh "docker save ${api_imagename}:${TAG_NAME} > ${api_imagename}-${TAG_NAME}.tar.gz"
+                    sh "docker save ${api_imagename}:${TAG_NAME} > images/${api_imagename}-${TAG_NAME}.tar.gz"
                  //   sh "docker save ${auth_imagename}:${TAG_NAME} > ${auth_imagename}-${TAG_NAME}.tar.gz"
                 }
             }
@@ -70,7 +70,7 @@ pipeline {
         stage("Upload") {
             steps {
                 withAWS(region:"${region}", credentials:"${aws_credential}") {
-                    s3Upload(file:"${TAG_NAME}", bucket:"${bucket}", path:"${TAG_NAME}/")
+                    s3Upload(file:"images/${TAG_NAME}", bucket:"${bucket}", path:"${TAG_NAME}/")
                 }    
             }
         }
