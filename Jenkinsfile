@@ -59,7 +59,8 @@ pipeline {
                  //   sh "docker save ${auth_imagename}:${TAG_NAME} > ${auth_imagename}-${TAG_NAME}.tar.gz"
                 }
             }
-        }
+        } */
+        /*
        stage('Deploy') {
             steps {
                 sh "docker stop elixirsoft/ventural-backend-app | true"
