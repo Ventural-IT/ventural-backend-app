@@ -23,7 +23,7 @@ public class PlayerServiceImpl implements PlayerService {
 	@Override
 	public Player addPlayer(Player player) {
 
-		log.info("Start to add new player and Team: {}", player.getName());
+		log.info("Start to add new player : {}", player.getName());
 
 		Boolean isExists = PersistenceDB.playerList.stream()
 				.anyMatch(p -> p.getName().equals(player.getName()) || 
