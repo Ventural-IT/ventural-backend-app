@@ -16,7 +16,7 @@ public class WelcomeController {
 	
 	@GetMapping(value = "/")
 	public ResponseEntity<?> welcome() {
-		return new ResponseEntity<>("Welcome to Hishab Game App", HttpStatus.OK);
+		return new ResponseEntity<>("Welcome to Hishab Game Application", HttpStatus.OK);
 	}
 	@GetMapping(value = "/api/1.0/dice")
 	public ResponseEntity<Integer> getDiceScore() {
